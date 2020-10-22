@@ -1,6 +1,8 @@
-import { World } from "./World";
-import { IInputReceiver } from "../interfaces/IInputReceiver";
-export declare class InputManager {
+import { World } from '../world/World';
+import { IInputReceiver } from '../interfaces/IInputReceiver';
+import { IUpdatable } from '../interfaces/IUpdatable';
+export declare class InputManager implements IUpdatable {
+    updateOrder: number;
     world: World;
     domElement: any;
     pointerLock: any;
@@ -15,7 +17,7 @@ export declare class InputManager {
     boundOnKeyDown: (evt: any) => void;
     boundOnKeyUp: (evt: any) => void;
     constructor(world: World, domElement: HTMLElement);
-    update(timestep: number): void;
+    update(timestep: number, unscaledTimeStep: number): void;
     setInputReceiver(receiver: IInputReceiver): void;
     setPointerLock(enabled: boolean): void;
     onPointerlockChange(event: MouseEvent): void;
